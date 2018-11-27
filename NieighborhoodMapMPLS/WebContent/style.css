@@ -1,0 +1,13 @@
+.tooltip {
+  font-weight: bold;
+  padding: 0.5rem;
+  border: 1px solid silver;
+}
+
+.hidden {
+  display: none;
+
+.svg {
+  background-color: black
+	background-image: "profiles.gif"
+}
