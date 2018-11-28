@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseSelect {
-
+//window.location.pathname.split('/'); we split pathname like this 
 	
 	private final String user ="root";
 	private final String pass = "EB485TacoTuesday1!";

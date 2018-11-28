@@ -6,8 +6,11 @@
 
 .hidden {
   display: none;
-
+}
 .svg {
   background-color: black
 	background-image: "profiles.gif"
+}
+.text {
+	  z-index: -1; position:relative;
 }
