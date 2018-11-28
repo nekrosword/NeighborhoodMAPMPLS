@@ -50,32 +50,15 @@ var svg = d3.select( "body" )
     var color = d3.scale.quantile()
     .domain([23,91])
 .range(["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]);
+    var colorSTPAUL = d3.scale.quantile()
+    .domain([931,5900])
+.range(["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]);
+
 d3.csv("d3neighborhood.csv", function(data) {
 color.domain([d3.min(data, function(d){return d.value;}),
 	d3.max(data, function(d){return d.value;})
 	]);
 d3.json("mnneigh.json", function(json) {
-	
-	/* g.selectAll("text")
-	 .data(json.features)
-	 .enter()
-	.append("text")
-
-	.text(function(d){
-
-	  return d.properties.name;
-	})
-	 .attr("x", function(d){
-	  return geoPath.centroid(d)[0];
-	})
-	.attr("y", function(d){
-	  return  geoPath.centroid(d)[1];
-	})
-
-	.attr("text-anchor","middle")
-	.attr('font-size','10pt')
-	.on("click", function(d) {loadPage( this.innerHTML );});
-	*/
  for (var i = 0; i < data.length; i++) {
 	 var neighborhood = data[i].neighborhood;
 	 
@@ -121,7 +104,7 @@ svg.selectAll("path")
              .text(d.properties.name);
 
          d3.select(this)
-         .style("fill", "#509e2f");
+         .style("fill", "#9999FF");
      })
      .on("mouseout", function(d) {
          d3.select("#tooltip").remove();
@@ -140,9 +123,41 @@ svg.selectAll("path")
   
     })
     .on("click", function(d) {loadPage( d.properties.name );});
+
+d3.csv("d3neighborhoodSt.csv,", function(StPaul) {
+	colorSTPAUL.domain([d3.min(StPaul, function(d){return d.Value;}),
+		d3.max(StPaul, function(d){return d.Value;})]);
+	    
     
+for (var i = 0; i < StPaul.length; i++) {
+	 var neighborhood = StPaul[i].neighborhood;
+	 
+	 var neighborhoodtot = parseFloat(StPaul[i].Value);
+	 console.log(neighborhoodtot);
+	 for (var n = 0; n <json.features.length; n++) {
+		 var actualNeigh = json.features[n].properties.name;
+		 if (neighborhood == actualNeigh) {
+			
+			 json.features[n].properties.value = neighborhoodtot;
+			 
+			 break;
+		 }
+	 }
+}
+svg.selectAll("path")
+.style("fill", function(d) {
+  var value = d.properties.Value;
+  if (value) {
+	  return color(value);
+  }else {
+	  return "#ccc";
+  }
+});
 })
 })
+})
+
+
     </script>
 
   </body>
