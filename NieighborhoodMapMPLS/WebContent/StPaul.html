@@ -46,13 +46,11 @@ var svg = d3.select( "body" )
     .attr( "height", height );
     var g = svg.append("g");
 var colorSTPAUL = d3.scale.quantile()
-.domain([931,5900])
+.domain([ 932, 1100, 2200, 3300,4000,5500,6000])
 .range(["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]);
 d3.csv("d3neighborhoodSt.csv", function(data2) {
 
-	colorSTPAUL.domain([d3.min(data2, function(d){return d.value;}),
-		d3.max(data2, function(d){return d.value;})
-		]);
+
 	d3.json("StPaul.json", function(json) {
 		for (var i = 0; i < data2.length; i++) {
 			 var neighborhood = data2[i].neighborhood;
@@ -63,7 +61,7 @@ d3.csv("d3neighborhoodSt.csv", function(data2) {
 				 var actualNeigh = json.features[n].properties.name;
 				 if (neighborhood == actualNeigh) {
 					
-					 json.features[n].properties.neighborhoodST = neighborhoodtot;
+					 json.features[n].properties.value = neighborhoodtot;
 					 
 					 break;
 				 }
@@ -77,7 +75,7 @@ d3.csv("d3neighborhoodSt.csv", function(data2) {
 		  .style("fill", function(d) {
 			  var value = d.properties.value;
 			  if (value) {
-				  return color(value);
+				  return colorSTPAUL(value);
 			  }else {
 				  return "#ccc";
 			  }
@@ -109,7 +107,7 @@ d3.csv("d3neighborhoodSt.csv", function(data2) {
 		         var value = d.properties.value;
 
 		         if (value) {
-		             return color(value);
+		             return colorSTPAUL(value);
 		         } else {
 		             return "#ddd";
 		         }

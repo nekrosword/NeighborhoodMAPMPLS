@@ -48,7 +48,7 @@ var svg = d3.select( "body" )
     .attr( "height", height );
     var g = svg.append("g");
     var color = d3.scale.quantile()
-    .domain([23,91])
+    .domain([25,43, 54, 55,57,65, 70,75, 91])
 .range(["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]);
 d3.csv("d3neighborhood.csv", function(data1) {
 	console.log(data1);
@@ -57,21 +57,7 @@ d3.csv("d3neighborhood.csv", function(data1) {
 	]);
 
 d3.json("mnneigh.json", function(json) {
-	for (var i = 0; i < data2.length; i++) {
-		 var neighborhood = data2[i].neighborhood;
-		 
-		 var neighborhoodtot = parseFloat(data2[i].value);
-		
-		 for (var n = 0; n <json.features.length; n++) {
-			 var actualNeigh = json.features[n].properties.name;
-			 if (neighborhood == actualNeigh) {
-				
-				 json.features[n].properties.neighborhoodST = neighborhoodtot;
-				 
-				 break;
-			 }
-		 }
-	 }  
+	
 
  for (var i = 0; i < data1.length; i++) {
 	 var neighborhood = data1[i].neighborhood;
