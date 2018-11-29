@@ -53,7 +53,7 @@ d3.csv("d3neighborhoodSt.csv", function(data2) {
 	colorSTPAUL.domain([d3.min(data2, function(d){return d.value;}),
 		d3.max(data2, function(d){return d.value;})
 		]);
-	d3.json("mnneigh.json", function(json) {
+	d3.json("StPaul.json", function(json) {
 		for (var i = 0; i < data2.length; i++) {
 			 var neighborhood = data2[i].neighborhood;
 			 
@@ -69,6 +69,54 @@ d3.csv("d3neighborhoodSt.csv", function(data2) {
 				 }
 			 }
 		 }  
+		svg.selectAll("path")
+		  .data(json.features)
+		  .enter()
+		  .append("path")
+		  .attr("d", geoPath)
+		  .style("fill", function(d) {
+			  var value = d.properties.value;
+			  if (value) {
+				  return color(value);
+			  }else {
+				  return "#ccc";
+			  }
+		  })
+		   .on("mouseover", function(d) {
+		         var xPosition = d3.mouse(this)[0];
+		         var yPosition = d3.mouse(this)[1]-10;
+
+		         svg.append("text")
+		             .attr("id", "tooltip")
+		             .attr("x", xPosition)
+		             .attr("y", yPosition)
+		             .attr("text-anchor", "middle")
+		             .attr("font-family", "sans-serif")
+		             .attr("font-size", "15px")
+		             .attr("font-weight", "bold")
+		             .attr("fill", "black")
+		             .text(d.properties.name);
+
+		         d3.select(this)
+		         .style("fill", "#9999FF");
+		     })
+		     .on("mouseout", function(d) {
+		         d3.select("#tooltip").remove();
+		         d3.select(this)
+		         .transition()
+		         .duration(250)
+		         .style("fill", function(d) {
+		         var value = d.properties.value;
+
+		         if (value) {
+		             return color(value);
+		         } else {
+		             return "#ddd";
+		         }
+		     });
+		  
+		    })
+		    .on("click", function(d) {loadPage( d.properties.name );});
 		
 		
 	})
