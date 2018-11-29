@@ -16,9 +16,10 @@
   
   </head>
   <body>
-  
+  <button onclick="stpaul()">St Paul Data</button>
     <script type="text/javascript">
-  var width = 1500;
+   
+  var width = 1400;
 var height = 1380;
 var neigh;
 // Create SVG
@@ -28,6 +29,9 @@ var neigh;
 
 //lower x goes to right
 //
+function stpaul() {
+	window.location.href = "StPaul.html";
+}
 function loadPage(a){
     window.location.href = "NieighborhoodMapMPLS/neighborhoods/" + a + ".jsp";
 }
@@ -48,7 +52,7 @@ var svg = d3.select( "body" )
     .attr( "height", height );
     var g = svg.append("g");
     var color = d3.scale.quantile()
-    .domain([25,43, 54, 55,57,65, 70,75, 91])
+    .domain([52,54, 55, 57, 59,61, 65, 70])
 .range(["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]);
 d3.csv("d3neighborhood.csv", function(data1) {
 	console.log(data1);
@@ -123,6 +127,7 @@ svg.selectAll("path")
   
     })
     .on("click", function(d) {loadPage( d.properties.name );});
+
 })
 })
 

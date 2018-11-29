@@ -7,9 +7,10 @@
 .hidden {
   display: none;
 }
+.body{ background-image: "minn.PNG";}
 .svg {
-  background-color: black
-	background-image: "profiles.gif"
+  background-color: black;
+	background-image: "minn.PNG";
 }
 .text {
 	  z-index: -1; position:relative;

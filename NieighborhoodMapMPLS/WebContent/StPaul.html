@@ -15,6 +15,7 @@
   
 </head>
 <body>
+<button onclick="Minneapolis()">Minneapolis Data</button>
 <script type="text/javascript">
 var width = 1500;
 var height = 1380;
@@ -26,8 +27,11 @@ var neigh;
 
 //lower x goes to right
 //
+function Minneapolis() {
+	window.location.href = "Minneapolis.html";
+}
 function loadPage(a){
-    window.location.href = "NieighborhoodMapMPLS/neighborhoods/" + a + ".jsp";
+    window.location.href = "neighborhoods/" + a + ".jsp";
 }
 
 var albersProjection = d3.geo.albers()
@@ -46,7 +50,7 @@ var svg = d3.select( "body" )
     .attr( "height", height );
     var g = svg.append("g");
 var colorSTPAUL = d3.scale.quantile()
-.domain([ 932, 1100, 2200, 3300,4000,5500,6000])
+.domain([ 1068, 1288, 1650, 1890,2030,2460,3070,5900])
 .range(["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]);
 d3.csv("d3neighborhoodSt.csv", function(data2) {
 
