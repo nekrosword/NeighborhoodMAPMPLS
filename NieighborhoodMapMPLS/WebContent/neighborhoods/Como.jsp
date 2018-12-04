@@ -7,6 +7,8 @@
 <title>Selected Neighborhood</title>
 </head>
 <body>
-
+// select info for past year
+<% String sql = "select type, amount from sdff where year = 2017"; %>
+<p> here is Como</p>
 </body>
 </html>
