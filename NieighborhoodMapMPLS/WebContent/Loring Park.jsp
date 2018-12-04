@@ -5,13 +5,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Como (St. Paul)</title>
+<title>Loring Park Crime</title>
 </head>
 <body>
-
-<h2> Como Data</h2>
-<%
-
+<h2> Loring Park Data</h2>
+<p>How many Homicides occurred in Loring Park in 2018 </p>
+<% 
 String user ="root";
 String pass = "EB485TacoTuesday1!";
 String jdbcURL = "jdbc:mysql://localhost:3306/crimedb2?autoreconnect=true&useSSL=false";
@@ -25,7 +24,7 @@ Class.forName("com.mysql.cj.jdbc.Driver");
  Connection con = DriverManager.getConnection(jdbcURL,user, pass); 
 	stmt = con.createStatement();
 //	String sql = "Select type, date from crime where neighborhood = Como";
-	        ResultSet results = stmt.executeQuery("Select type, date from crime where neighborhood ='Como'");
+	        ResultSet results = stmt.executeQuery("Select count(type), date from crime where neighborhood ='Loring Park' and type = 'Homicide'");
 	        ResultSetMetaData rs = results.getMetaData();
 	     
 	        int numberOfCoumns = rs.getColumnCount();
@@ -56,6 +55,5 @@ Class.forName("com.mysql.cj.jdbc.Driver");
 	        	ex.getMessage();
 	        }
 	        %>
-	        
 </body>
 </html>
