@@ -56,7 +56,7 @@ var svg = d3.select( "body" )
     .domain([52,54, 55, 57, 59,61, 65, 70])
 .range(["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]);
 d3.csv("d3neighborhood.csv", function(data1) {
-	console.log(data1);
+	
 	color.domain([d3.min(data1, function(d){return d.value;}),
 	d3.max(data1, function(d){return d.value;})
 	]);

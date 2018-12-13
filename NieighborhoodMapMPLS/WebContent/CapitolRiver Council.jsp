@@ -6,6 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Capital River </title>
+ <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
 <h2> Capital River Crime</h2>
@@ -28,8 +30,8 @@ Class.forName("com.mysql.cj.jdbc.Driver");
 	        ResultSetMetaData rs = results.getMetaData();
 	        while(results.next()) {
 	        	for (int i =1; i<2; i++) {
-	        		out.print("Capitol River has the most amount of crime within St. Paul in 2018 with " + results.getString(i) +" instances of" + 
-	        				" crime in the past week");
+	        		out.print("<p>Capitol River has the most amount of crime within St. Paul in 2018 with " + results.getString(i) +" instances of" + 
+	        				" crime in the past week</p>");
 	        	}
 	        }
 	        

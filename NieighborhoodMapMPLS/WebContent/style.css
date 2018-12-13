@@ -15,3 +15,6 @@
 .text {
 	  z-index: -1; position:relative;
 }
+p {
+	font-size: 18px;
+}

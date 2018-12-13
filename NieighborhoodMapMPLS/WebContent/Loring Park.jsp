@@ -6,6 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Loring Park Crime</title>
+ <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
 <h2> Loring Park Data</h2>

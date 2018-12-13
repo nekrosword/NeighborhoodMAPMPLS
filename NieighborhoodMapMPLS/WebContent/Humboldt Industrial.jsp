@@ -6,7 +6,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Humboldt Industrial</title>
+ <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
+
 <body>
 <h2> Humboldt Industrial Data</h2>
 <%
@@ -26,7 +29,7 @@ Class.forName("com.mysql.cj.jdbc.Driver");
 
 	        ResultSet results = stmt.executeQuery("Select count(type) from crime where neighborhood ='Humboldt'");
 	        ResultSetMetaData rs = results.getMetaData();
-	        out.print("Humboldt Industrial has the least amount of crime within Minneapolis in 2018 with 35 instances of crime in the last year");
+	        out.print("<p>Humboldt Industrial has the least amount of crime within Minneapolis in 2018 with 35 instances of crime in the last year</p>");
  }catch(SQLException e) {
 	        	e.getMessage();
 	        }
